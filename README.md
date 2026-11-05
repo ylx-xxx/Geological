@@ -4,6 +4,20 @@ Research code for cross-domain remote sensing pretraining with Swin-UPerNet. Lov
 
 **Start here:** [Reproduce results](docs/REPRODUCE.md) · [Experimental protocol and limitations](docs/EXPERIMENT_PROTOCOL.md) · [Artifact status](docs/ARTIFACT_STATUS.md)
 
+## New: 2026-11-06 controlled five-configuration study（中文入口）
+
+[`paper_release_20261106/`](paper_release_20261106/README.md) 是本轮冻结的五配置发布入口：Swin-T + UPerNet，三 seed，按 Valid 前景 IoU 选模，三视角 TTA。
+
+| 配置 | Valid 均值 | 历史 Test 均值 |
+|---|---:|---:|
+| RGB-S1-N0 | 0.4903 | 0.4731 |
+| full14-S1-N0 | 0.5103 | 0.4651 |
+| RGB-S2-N0 | 0.5106 | 0.4994 |
+| full14-S2-N0 | 0.5507 | 0.4710 |
+| full14-S2-N2 | 0.5294 | 0.4864 |
+
+均值是三个 seed 的算术平均；不含新的独立 Test 确认（历史 Test 已参与过研究反馈），权重与原始数据均未上传。历史结果（0.4793 / 0.4426 / 0.4231 等）保留各自协议身份，**不被本入口替代**。协议与边界见 [`PROTOCOL.md`](paper_release_20261106/PROTOCOL.md)。
+
 ## Evidence status
 
 The retained final model reports landslide IoU **0.4793**, F1 **0.6480**, precision **0.6357**, recall **0.6609**, and mIoU **0.7328** on benchmark TestData after TrainData + ValidData training. This is a reproducible benchmark result, not a state-of-the-art claim. Historical test-informed candidate comparisons limit claims of untouched test evaluation.

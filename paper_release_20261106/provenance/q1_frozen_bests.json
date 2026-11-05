@@ -1,0 +1,39 @@
+{
+  "selection_rule": "训练期仅用 Valid（245 张）三视角 TTA 的 Landslide_IoU 选最高轮；并列取最早轮；Test 不参与任何选择",
+  "selection_split": "val",
+  "selection_metric": "Landslide_IoU",
+  "selection_tta_views": 3,
+  "test_used_for_selection": false,
+  "runs": [
+    {
+      "seed": 2026,
+      "run": "F14-L-S2-N2-2026",
+      "checkpoint": "<REMOTE_DATA_ROOT>/grsl_work_20261103/q1_norm_stage1_v1/runs/F14-L-S2-N2-2026/best.pt",
+      "checkpoint_sha256": "403fa5b8409b7617645c2f90ab009a19d1e76a170a9a575a103764939499c8c9",
+      "best_epoch": 17,
+      "best_valid_iou_selection": 0.5307684194489694,
+      "last10_valid_iou_mean": 0.4974799976834229,
+      "completed_epochs": 60
+    },
+    {
+      "seed": 2027,
+      "run": "F14-L-S2-N2-2027",
+      "checkpoint": "<REMOTE_DATA_ROOT>/grsl_work_20261103/q1_norm_stage1_v1/runs/F14-L-S2-N2-2027/best.pt",
+      "checkpoint_sha256": "34f8aeaea5943824f846762ea448c524693e798b1faef4414e3845b4a6c54165",
+      "best_epoch": 29,
+      "best_valid_iou_selection": 0.5177546648314445,
+      "last10_valid_iou_mean": 0.492128229825172,
+      "completed_epochs": 60
+    },
+    {
+      "seed": 2028,
+      "run": "F14-L-S2-N2-2028",
+      "checkpoint": "<REMOTE_DATA_ROOT>/grsl_work_20261103/q1_norm_stage1_v1/runs/F14-L-S2-N2-2028/best.pt",
+      "checkpoint_sha256": "f2dd415424a2c5da2ce1bcabeb04de0ab6c09356529913639f2be646955b30ad",
+      "best_epoch": 24,
+      "best_valid_iou_selection": 0.5395315956306583,
+      "last10_valid_iou_mean": 0.4884105862220342,
+      "completed_epochs": 60
+    }
+  ]
+}
