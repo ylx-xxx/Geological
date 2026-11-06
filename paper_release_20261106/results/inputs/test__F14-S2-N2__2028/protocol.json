@@ -1,0 +1,29 @@
+{
+  "checkpoint_sha256": "f2dd415424a2c5da2ce1bcabeb04de0ab6c09356529913639f2be646955b30ad",
+  "split": "test",
+  "input_scale": 2,
+  "channels": "full14",
+  "normalization": "finite_zero_p1_p99_patch_band_zscore_v1_terrain_train_fixed_v1",
+  "normalization_mode": "n2",
+  "terrain_stats_file": "<REMOTE_DATA_ROOT>/grsl_work_20261103/q1_norm_stage0_v1/results/terrain_n2_stats.npz",
+  "terrain_stats_sha256": "e136b906b4dba8e4fecc52e5908ca374cc2b2e70f5e2184be7a73be06f6abe38",
+  "terrain_stats_train_list_sha256": "8a6c49645f26337163e09267e5636603718e2d7585d43e91ccf80d763a03b476",
+  "tta_views": 3,
+  "amp": true,
+  "checkpoint_load": "strict",
+  "sample_count": 800,
+  "single_inference_pass": true,
+  "versions": {
+    "torch": "2.7.0+cu128",
+    "timm": "1.0.27",
+    "numpy": "2.4.6",
+    "h5py": "3.16.0"
+  },
+  "source_sha256": {
+    "reproducibility/eval_scale2.py": "ac5a23f233f364bf4148f4e56611cfe92cec8cafe34fabfb8fb7565a6c3c93d6",
+    "reproducibility/core.py": "74c45765bd8a82c4534510ecbe5d156ee7bb2f727b7ea6b1d0f9d01ff3317734",
+    "reproducibility/evaluate.py": "96a76235b90b47c7831a37aa6ea9fffbed381c254462d815b1d071556b723b9b",
+    "train_l4s_qz/model.py": "e700d3f616234b1a118aad7ae528ad322b2a431fa600652ea8dc31a085437f93",
+    "train_l4s_qz/scaled_model.py": "9844af585a2e4f1f588f815a03aed6e54c1237eff6478a747e62cba2adcc5855"
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "created_utc": "2026-11-05T14:57:18.400165+00:00",
+  "task": "final zero-training paired patch bootstrap",
+  "bootstrap_definition": {
+    "reps": 5000,
+    "base_seed": 20261105,
+    "rng_streams": {
+      "valid": "SeedSequence([seed, 0])",
+      "test": "SeedSequence([seed, 1])"
+    },
+    "resample_unit": "patch (with replacement)",
+    "index_sharing": "same split & replicate shared by all configs and seeds",
+    "statistic": "sum TP/FP/FN across resampled patches -> pooled IoU -> same-seed difference -> mean over 3 seeds",
+    "interval": "percentile 2.5/97.5 (numpy.percentile, linear)",
+    "pooled_iou_formula": "TP/(TP+FP+FN)",
+    "invalid_rule": "denominator==0 -> NaN; reported, not redrawn"
+  },
+  "configs": [
+    "RGB-S1",
+    "F14-S1",
+    "RGB-S2",
+    "F14-S2",
+    "F14-S2-N2"
+  ],
+  "seeds": [
+    "2026",
+    "2027",
+    "2028"
+  ],
+  "contrasts": [
+    {
+      "id": "C1",
+      "left": "F14-S2",
+      "right": "RGB-S2",
+      "role": "main: multi-channel effect"
+    },
+    {
+      "id": "C2",
+      "left": "F14-S2-N2",
+      "right": "F14-S2",
+      "role": "secondary: terrain normalization effect"
+    },
+    {
+      "id": "R1",
+      "left": "RGB-S2",
+      "right": "RGB-S1",
+      "role": "reference: RGB scale effect"
+    },
+    {
+      "id": "R2",
+      "left": "F14-S2",
+      "right": "F14-S1",
+      "role": "reference: full14 scale effect"
+    }
+  ],
+  "tables": {
+    "valid|RGB-S1|2026": {
+      "local_dir": "../inputs\\valid__RGB-S1__2026",
+      "per_sample_csv_sha256": "15e0c54f3ba992547f9986abc4270bef1a955b90014750614d46ee4dfc194f07",
+      "protocol_sha256": "13511eb08041d6cd18a410e502f28821bf529cf70756496db6a8d9e33393cb40",
+      "metrics_sha256": "c4109ab46c4606bfa7a69c93f6dff0d6735f180317d72cb03fb7fed43a5b7e34",
+      "n_samples": 245,
+      "patch_mean_iou": 0.19880482569180744,
+      "pooled_iou_full": 0.4979596083372831
+    },
+    "valid|RGB-S1|2027": {
+      "local_dir": "../inputs\\valid__RGB-S1__2027",
+      "per_sample_csv_sha256": "3aee87c2f740cf725d3b81c88456dcd258943a2e6e04c23d71b847baed5a569f",
+      "protocol_sha256": "d02fdc1163e18bb61be048aee89cc88cb793908aa68d0ed80a9440d6612ad423",
+      "metrics_sha256": "9e973fe350c3ef72b7007622f8831d9f3fdc59ca21e1f4846ab7d459bd17051a",
+      "n_samples": 245,
+      "patch_mean_iou": 0.21517528791020255,
+      "pooled_iou_full": 0.4889794669493285
+    },
+    "valid|RGB-S1|2028": {
+      "local_dir": "../inputs\\valid__RGB-S1__2028",
+      "per_sample_csv_sha256": "a0c180050c096585debeafb16d45e0d447f15af38f326a95d93e9ccb2d51792d",
+      "protocol_sha256": "8c6875a5964ff8f08486a6e83b2da9f1ba315edf3337b0ffb92ffbb711afb34c",
+      "metrics_sha256": "df57e4ccfd0d71184171de137ddcbbf1165435c1cd7558882190cbdc8fd46cc7",
+      "n_samples": 245,
+      "patch_mean_iou": 0.1975035853554899,
+      "pooled_iou_full": 0.4840625822622549
+    },
+    "valid|F14-S1|2026": {
+      "local_dir": "../inputs\\valid__F14-S1__2026",
+      "per_sample_csv_sha256": "3734013a84e86ebfbc9074274f421bcf4e5b00dd652fe0c07ac3ec25e76f3c85",
+      "protocol_sha256": "d23360bb4a142dd83c598729321416221c6bc53a8b695b288e0dbe5ec73cee35",
+      "metrics_sha256": "754860382afd0766686f70238a2516dd3411e753a06b8d6f2139d438873aaa2e",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2128597547028443,
+      "pooled_iou_full": 0.5146635022885235
+    },
+    "valid|F14-S1|2027": {
+      "local_dir": "../inputs\\valid__F14-S1__2027",
+      "per_sample_csv_sha256": "2a10f726967afd902b8783fcbf4f7519a59a99ad2a427172646537cc7a98d0b8",
+      "protocol_sha256": "624ab97690d64399f7da5539bebd741d8c5471a1ddd90026c696e5e085be8a8b",
+      "metrics_sha256": "36a35b112f775e0d914c0f6af22015683009b66d2d1a2976ecb5cbe85ca7757f",
+      "n_samples": 245,
+      "patch_mean_iou": 0.1888550165359288,
+      "pooled_iou_full": 0.5045309675577966
+    },
+    "valid|F14-S1|2028": {
+      "local_dir": "../inputs\\valid__F14-S1__2028",
+      "per_sample_csv_sha256": "f67e355115d4ce751f8bdd8763c3596dec822824feb8e9a38e3e9bfa3cd8b9e7",
+      "protocol_sha256": "3d7e4903dd4e8766fb529a71b9029648f305d97da858d2a901f2293101550c08",
+      "metrics_sha256": "3ac7917cd4efc8f68933fd7cb92a43a1733694cf32606a76f5231640dc976391",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2121449100354064,
+      "pooled_iou_full": 0.5116660506375901
+    },
+    "valid|RGB-S2|2026": {
+      "local_dir": "../inputs\\valid__RGB-S2__2026",
+      "per_sample_csv_sha256": "2c3e1a2d3ac748d6c87d6c74c1d2774d4776277bf9fd7f066aa4b008d8a1a0c0",
+      "protocol_sha256": "3730b3c285c45e151d405a585d2141c4306f5efac8343e11ebb73005b1c64c07",
+      "metrics_sha256": "e844bfc5bc6cc6516f42ee0b9867aecdcf4758ab3986d33cb9d570564bea3a0b",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2217779077718426,
+      "pooled_iou_full": 0.5118957681981428
+    },
+    "valid|RGB-S2|2027": {
+      "local_dir": "../inputs\\valid__RGB-S2__2027",
+      "per_sample_csv_sha256": "5cd3a997b660e89f5ab1d4b8adb8082fea93cf29cea6df99aadec37301867487",
+      "protocol_sha256": "9e0efa1fd4f2a42c2dfc915f8b29fb3d3a5de59a2480b4d609a2eae52176d52f",
+      "metrics_sha256": "2e9b071516759f9243b90696fd48b3bcb499922721a8a94d2a67721cfaa3afe4",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2249460078041171,
+      "pooled_iou_full": 0.5059519081284114
+    },
+    "valid|RGB-S2|2028": {
+      "local_dir": "../inputs\\valid__RGB-S2__2028",
+      "per_sample_csv_sha256": "6e600b12d5444f89b6b01459f6a8084226dd6f4e1e1da38a2e986b07cbe2edce",
+      "protocol_sha256": "29d8a05b6ab6098633b9a6c0e74e54aec1aebca00bf71c57425c7ef4baa903f1",
+      "metrics_sha256": "73d25eff104c9c126d78668762b0f1d88878064f91ac835e26645bd3dc963914",
+      "n_samples": 245,
+      "patch_mean_iou": 0.21522237228631824,
+      "pooled_iou_full": 0.5138514231987553
+    },
+    "valid|F14-S2|2026": {
+      "local_dir": "../inputs\\valid__F14-S2__2026",
+      "per_sample_csv_sha256": "426b7185bbfea887c8d6badbcdafec5bf6b73485fbfa6fb223e50a1fa788d720",
+      "protocol_sha256": "513265e131109dd7462843e9ad43fa86a32b81b6cb98241fedc42a71d5a70b1b",
+      "metrics_sha256": "51a9f5af80ec30ca9820c0af5f311107278600c167782431e30b95605d92dcb4",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2377797727407372,
+      "pooled_iou_full": 0.5340055124973497
+    },
+    "valid|F14-S2|2027": {
+      "local_dir": "../inputs\\valid__F14-S2__2027",
+      "per_sample_csv_sha256": "6baf6b8a1b6a2d5a93e86bdf832673603a2a20bfebc0df76544c0c81f52860e0",
+      "protocol_sha256": "54928886f34883e069555a9f2c82d22e55192839eb5a4b649466a841d7923b73",
+      "metrics_sha256": "7d930c64616d9a71cabd763d061db58529688b57f919364439029b7bb33cd1ef",
+      "n_samples": 245,
+      "patch_mean_iou": 0.21931610697087936,
+      "pooled_iou_full": 0.5267966663227522
+    },
+    "valid|F14-S2|2028": {
+      "local_dir": "../inputs\\valid__F14-S2__2028",
+      "per_sample_csv_sha256": "b476c7138ff12f204a131b4f638d693241f7a3f74eae158d5e2fbe90cb3798ed",
+      "protocol_sha256": "f286326303d99b987c5abd8763f9cd2ed058d332c3199808a70f85897e351b19",
+      "metrics_sha256": "c6c78fe6f0315e7f13eed908d6b690f118c60c7be4e0f9aaedea276d3011da69",
+      "n_samples": 245,
+      "patch_mean_iou": 0.21149475911328924,
+      "pooled_iou_full": 0.5912372674806282
+    },
+    "valid|F14-S2-N2|2026": {
+      "local_dir": "../inputs\\valid__F14-S2-N2__2026",
+      "per_sample_csv_sha256": "b5114986d3e0846b6e27bf623d2021ce1a3bd5c19d0f66755b35ac54f740837d",
+      "protocol_sha256": "bb1a01020ed2f7e752a4a4ba879cfafd7e7568a9a0f9b4ac3ce4374440f2c9d0",
+      "metrics_sha256": "ef9cb8b8941ee477da5df42effdd0364d92ee85da50a820d6643338be70adb59",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2090673548210826,
+      "pooled_iou_full": 0.5307684194489694
+    },
+    "valid|F14-S2-N2|2027": {
+      "local_dir": "../inputs\\valid__F14-S2-N2__2027",
+      "per_sample_csv_sha256": "42a7a83d598262ba013af59f813e8052d1072f53ad452de09512af5dd0127d90",
+      "protocol_sha256": "9cd702751158a5d525219155c7bb61575c6882515d0c4e5be6fd0694178e0afa",
+      "metrics_sha256": "a255e17ee44fa53b552fb716225b264f48591e092d062b9637734baece2b910c",
+      "n_samples": 245,
+      "patch_mean_iou": 0.23244838329878004,
+      "pooled_iou_full": 0.5177546648314445
+    },
+    "valid|F14-S2-N2|2028": {
+      "local_dir": "../inputs\\valid__F14-S2-N2__2028",
+      "per_sample_csv_sha256": "bfc7efbf89f3bc94db376fd65504aca2e12091c01bcbc6df52c2cb1b3ce4d5c9",
+      "protocol_sha256": "ab2746bb8cb3a5de11161b52ecf22b4c23dde7a974c6f4a1271d2fe5088e1478",
+      "metrics_sha256": "00198bfe759f946bdbfa30cc8160d1127d5ccdd7bce6d0698981faf75fe8a416",
+      "n_samples": 245,
+      "patch_mean_iou": 0.2282301460854377,
+      "pooled_iou_full": 0.5395315956306583
+    },
+    "test|RGB-S1|2026": {
+      "local_dir": "../inputs\\test__RGB-S1__2026",
+      "per_sample_csv_sha256": "66b64606e39f14477f80fda728a062e5072c913d38182270ba43d3a66e8afcbf",
+      "protocol_sha256": "4bd6dc3270f392429538a099e2de00ca6f4c1387f185e648e2757a6018e601e1",
+      "metrics_sha256": "7819d0187c05a56d9d3a3785af555c1d6b696e7687fc1d47f611c5a6672deed1",
+      "n_samples": 800,
+      "patch_mean_iou": 0.20851338033505332,
+      "pooled_iou_full": 0.4847422273094376
+    },
+    "test|RGB-S1|2027": {
+      "local_dir": "../inputs\\test__RGB-S1__2027",
+      "per_sample_csv_sha256": "f1bd36302d40059e70d6844696bc132ab4a085bc47f4d4c86698c6a92b08e3e4",
+      "protocol_sha256": "e3fc0077d356748f1fa2964f16830b2cbee48852d30a04ef8078b03f29630e64",
+      "metrics_sha256": "566295f85b572a11c0c211adc0f15c94d7a034e3056fe9e510aef923ba60a082",
+      "n_samples": 800,
+      "patch_mean_iou": 0.23116559800601688,
+      "pooled_iou_full": 0.4771964117040038
+    },
+    "test|RGB-S1|2028": {
+      "local_dir": "../inputs\\test__RGB-S1__2028",
+      "per_sample_csv_sha256": "e8cee22014e63b88504548bf5647b7916d478ba07fbf33b3f158dfd839cb3d85",
+      "protocol_sha256": "fd600f9ca544d0b9a60c6fadfede693233073f1b6f5c9cb2c2c62798757cbf2d",
+      "metrics_sha256": "c8ce9e7da417a93b054291fb9a5bd2155b97810511de7cc285d4a0cf4c04a4ec",
+      "n_samples": 800,
+      "patch_mean_iou": 0.21120953532760567,
+      "pooled_iou_full": 0.4574788674217964
+    },
+    "test|F14-S1|2026": {
+      "local_dir": "../inputs\\test__F14-S1__2026",
+      "per_sample_csv_sha256": "56917b75807edc364e61622e4be118aa7b9b0137c2ee0a8cfd77feaf49683d00",
+      "protocol_sha256": "dada9fbc7d92657cf5c4cce9f6eed7bd0b8bcdbf4bfa4efaad3deaae80c3cedf",
+      "metrics_sha256": "2e9a9e7292235e2dec2220bdcb65123fe2b72e22a7c3db510bb639bebace5852",
+      "n_samples": 800,
+      "patch_mean_iou": 0.2296573117284934,
+      "pooled_iou_full": 0.46817586906183034
+    },
+    "test|F14-S1|2027": {
+      "local_dir": "../inputs\\test__F14-S1__2027",
+      "per_sample_csv_sha256": "89d9814bf41437079a1f1e74ff5da79ca52f62ebace7655beb0e7429c2c4088d",
+      "protocol_sha256": "bdb0bad664897ca7561268902b756633e04fcf475c23523cfd607fbdfaf7cbf4",
+      "metrics_sha256": "ecaf4c1648f058b1c05a31c63586fa634b0b7ad9c3e0b7218e6f7c790292cfc1",
+      "n_samples": 800,
+      "patch_mean_iou": 0.20396468661583328,
+      "pooled_iou_full": 0.4605305305005643
+    },
+    "test|F14-S1|2028": {
+      "local_dir": "../inputs\\test__F14-S1__2028",
+      "per_sample_csv_sha256": "07e341ee1a255cfc03943ecacf405785d9a4be02a86a15969dea478d78aa1216",
+      "protocol_sha256": "26871a702c88519f2365fd396be094deeecf3f876c8d87b43fe613f503d0005d",
+      "metrics_sha256": "1e7008d68a4a4dba6cadddfabe16158acc6cb93d470fa160c583f9dea9063e64",
+      "n_samples": 800,
+      "patch_mean_iou": 0.22177019103380324,
+      "pooled_iou_full": 0.46660260205462945
+    },
+    "test|RGB-S2|2026": {
+      "local_dir": "../inputs\\test__RGB-S2__2026",
+      "per_sample_csv_sha256": "6edceb51037df7a3be577db2a238faa7b18e6dc5000a67c91d551bbc92541c87",
+      "protocol_sha256": "1fee6dd7768f87e2c48c7c937e3d50e3cbd5dc24e01dc78204783fdea09becd1",
+      "metrics_sha256": "dc7298b5de8935efd0d66507d84055c7e0d903251849528e25ac621ef349e697",
+      "n_samples": 800,
+      "patch_mean_iou": 0.2349702571038512,
+      "pooled_iou_full": 0.49849207235701143
+    },
+    "test|RGB-S2|2027": {
+      "local_dir": "../inputs\\test__RGB-S2__2027",
+      "per_sample_csv_sha256": "68f4d8390289c391416d473c012934e88548c4ec53a35ab84b15efdc7e545998",
+      "protocol_sha256": "b05e9131c6f8e5c154a9542c51c3e22a2914847c0e52a8a91e393a1e8c46dd45",
+      "metrics_sha256": "b2e989e80e9dfe385cff475455b5d77f6028849dd025eb6e6111919aae79ceae",
+      "n_samples": 800,
+      "patch_mean_iou": 0.24238696748495558,
+      "pooled_iou_full": 0.5103962005456062
+    },
+    "test|RGB-S2|2028": {
+      "local_dir": "../inputs\\test__RGB-S2__2028",
+      "per_sample_csv_sha256": "41976f9a71eb2711ff206c5607043b9e6f1d1f689aacedcdefad65e29159acf2",
+      "protocol_sha256": "b5548ecf6b9b2f1c3e2b334b61ff245979b73a5945fb57d4d1f2322373b58670",
+      "metrics_sha256": "e3b2b426913b29698a65b5ed2a4900b31f2e98529199c85f6c81f786a9c0357e",
+      "n_samples": 800,
+      "patch_mean_iou": 0.2211096885682805,
+      "pooled_iou_full": 0.4893645217136316
+    },
+    "test|F14-S2|2026": {
+      "local_dir": "../inputs\\test__F14-S2__2026",
+      "per_sample_csv_sha256": "f04ab47e7fc46880c3b22ded349811296994e142308468459969f702e40c2b5d",
+      "protocol_sha256": "64593fd9345e8737cd62b0c7ff2adb34ac04edb91dc84c92a890365b08613a8b",
+      "metrics_sha256": "509361427aba381b2174454c1660e45981a17e98f021b7f62627da219c9439a4",
+      "n_samples": 800,
+      "patch_mean_iou": 0.25127083374848624,
+      "pooled_iou_full": 0.46917789290877726
+    },
+    "test|F14-S2|2027": {
+      "local_dir": "../inputs\\test__F14-S2__2027",
+      "per_sample_csv_sha256": "d8432ee3b9a4ee7fe352f852cb8f791493160ca676e2615dbb5f2bd00d21c810",
+      "protocol_sha256": "59856f6ce60ca44731e70f112250bf02f7b026a22a87861e2bb247cc64221969",
+      "metrics_sha256": "a403dd4f057130883f2e468d558f75deecccb395de167b54c1c1b8e09241823e",
+      "n_samples": 800,
+      "patch_mean_iou": 0.24116138029354545,
+      "pooled_iou_full": 0.4693217665615142
+    },
+    "test|F14-S2|2028": {
+      "local_dir": "../inputs\\test__F14-S2__2028",
+      "per_sample_csv_sha256": "d01fc56051dcaa0fb4e6c03c5a332422a6b1615efd6d9eb81838ddc6948595a9",
+      "protocol_sha256": "59c9ef94f4b52542511746ffe8261a9c9959a0fe3c00040303217397341148a8",
+      "metrics_sha256": "b0dee6a71cb278deb5c1078ec4dc27f57f28cfbea328f585154b7db5fd055183",
+      "n_samples": 800,
+      "patch_mean_iou": 0.22467534643142315,
+      "pooled_iou_full": 0.4743644730893621
+    },
+    "test|F14-S2-N2|2026": {
+      "local_dir": "../inputs\\test__F14-S2-N2__2026",
+      "per_sample_csv_sha256": "c27bb669f3fe2162c60e3de64ea509a77f4efaf6e633564cfc81a38f36626765",
+      "protocol_sha256": "d3c887b262319d071ec0aa7e092226609b0169972c7e01030b476374c5c26f56",
+      "metrics_sha256": "257ecfffe76937a78962da1014e6a9f44c7718e0fb92262c5a7fee8bee8a3e46",
+      "n_samples": 800,
+      "patch_mean_iou": 0.22222829908970185,
+      "pooled_iou_full": 0.47806943421735615
+    },
+    "test|F14-S2-N2|2027": {
+      "local_dir": "../inputs\\test__F14-S2-N2__2027",
+      "per_sample_csv_sha256": "44f92686a6571fcfe9f431bb86ed177b41b45050795e06e3dbe98131a858c4c9",
+      "protocol_sha256": "348b187fdd3721a4d68ced186fefa410a4a86b9e635b0bb878b90f424eb8c548",
+      "metrics_sha256": "c8245ac62274f03ee521896bd0a885bd594511b63c88b1ad3158386c875c21a5",
+      "n_samples": 800,
+      "patch_mean_iou": 0.25097956509588376,
+      "pooled_iou_full": 0.47768669659107466
+    },
+    "test|F14-S2-N2|2028": {
+      "local_dir": "../inputs\\test__F14-S2-N2__2028",
+      "per_sample_csv_sha256": "17b7a8a3aa4b144099d4e37930f5c99fc37b9bbe9bbd7a35f3e0500b99ce998a",
+      "protocol_sha256": "f8dd8ee5508bf41cc9805bf97a40d9dbecfae296b7492144ca7cbe736ffa218a",
+      "metrics_sha256": "46bec73b6e26d10616a0a1d602b6e0c3d92785fbbcf7f4a34cc1b838aa7fce3a",
+      "n_samples": 800,
+      "patch_mean_iou": 0.2501052429338304,
+      "pooled_iou_full": 0.5033132082292338
+    }
+  },
+  "source_manifests": {
+    "freeze_manifest.json": {
+      "remote": "<REMOTE_DATA_ROOT>/grsl_work_20261103/channel_scale_2x2_20261104/analysis/freeze_manifest.json",
+      "sha256": "73d9ec549255e467622c80b3da4a33aa69a1ffea878c7074efdf035e409f05b2"
+    },
+    "test_manifest.json": {
+      "remote": "<REMOTE_DATA_ROOT>/grsl_work_20261103/channel_scale_2x2_20261104/test_evals/test_manifest.json",
+      "sha256": "980e44a056bbecb8169289c36bbb74b7e229a60af19a4cb36787a7c40d632be4"
+    },
+    "q1_frozen_bests.json": {
+      "remote": "<REMOTE_DATA_ROOT>/grsl_work_20261103/q1_norm_stage1_v1/frozen_bests.json",
+      "sha256": "4f23fe2bfd9df01ac609eafb802e0c06b3ed89e9ae88e82581a14dfc869f5d08"
+    }
+  },
+  "environment": {
+    "python": "3.12.7",
+    "numpy": "1.26.4"
+  },
+  "split_sizes": {
+    "valid": 245,
+    "test": 800
+  },
+  "label_consistency": "checked: positive_pixels/valid_pixels identical across all configs/seeds within split",
+  "bootstrap_invalid_reps": {
+    "valid": 0,
+    "test": 0
+  },
+  "note": "Test is a historical benchmark already reused during research feedback; intervals do not restore independence or correct adaptive reuse/selection."
+}

@@ -1,0 +1,14 @@
+{
+  "freeze_manifest.json": {
+    "remote": "<REMOTE_DATA_ROOT>/grsl_work_20261103/channel_scale_2x2_20261104/analysis/freeze_manifest.json",
+    "sha256": "73d9ec549255e467622c80b3da4a33aa69a1ffea878c7074efdf035e409f05b2"
+  },
+  "test_manifest.json": {
+    "remote": "<REMOTE_DATA_ROOT>/grsl_work_20261103/channel_scale_2x2_20261104/test_evals/test_manifest.json",
+    "sha256": "980e44a056bbecb8169289c36bbb74b7e229a60af19a4cb36787a7c40d632be4"
+  },
+  "q1_frozen_bests.json": {
+    "remote": "<REMOTE_DATA_ROOT>/grsl_work_20261103/q1_norm_stage1_v1/frozen_bests.json",
+    "sha256": "4f23fe2bfd9df01ac609eafb802e0c06b3ed89e9ae88e82581a14dfc869f5d08"
+  }
+}
