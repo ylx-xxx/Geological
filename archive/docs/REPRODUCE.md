@@ -1,6 +1,6 @@
 # Reproduce an audited result
 
-Run commands from the repository root. Obtain datasets and weights separately under their original access conditions. No checkpoint download URL is claimed until one is actually published.
+Run commands from the `archive/` directory. Obtain datasets and weights separately under their original access conditions. No checkpoint download URL is claimed until one is actually published.
 
 ## Environment
 

@@ -40,12 +40,12 @@ figures/
 
 ## 如何重画
 
-依赖：Python 3、NumPy、Matplotlib。以下命令均在 `paper_release_20261106/figures/` 目录下执行（相对路径）。
+依赖：Python 3、NumPy、Matplotlib。以下命令均在 `figures/` 目录下执行（相对路径）。
 
 `make_figures.py` 的 G3 部分按“快照根/训练目录/history.csv”读取文件，因此需先把随附的 15 份 CSV 按上表映射摆成快照目录树：
 
 ```bash
-cd paper_release_20261106/figures
+cd figures
 SNAP=snapshot/grsl_work_20261103
 
 stage() {  # 参数：config seed 相对目录
