@@ -66,7 +66,7 @@
   - C1：full14-S2 − RGB-S2（多通道主效应）
   - C2：full14-S2-N2 − full14-S2（地形归一化效应）
   - R1 / R2：同向参照
-  - D = Valid 效应 − Test 效应（划分间方向一致性）
+  - D = Test 效应 − Valid 效应（D = ΔTest − ΔValid，划分间方向一致性）
 
 ## 8. 复现状态声明
 

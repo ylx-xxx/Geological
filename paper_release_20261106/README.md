@@ -42,7 +42,7 @@ Swin-T + UPerNet，把 LoveDA 源域 RGB 编码器迁移到 Landslide4Sense 滑�
 
 1. **Valid 选模、历史 Test 参与过研究反馈**：本轮冻结不能把 Test 恢复成"全新独立确认"。
 2. 配对 patch bootstrap 的区间**条件于固定检查点**，不含训练随机性、选模不确定性；未校正空间相关与多重比较。
-3. C1（full14-S2 − RGB-S2）的 Test 区间跨零；D（Valid 效应减 Test 效应）区间不跨零，**不等于**"Test 下降本身已被确证"。
+3. C1（full14-S2 − RGB-S2）的 Test 区间跨零；D（Test 效应减 Valid 效应，D = ΔTest − ΔValid）区间不跨零，**不等于**"Test 下降本身已被确证"。
 4. LoveDA 相对 ImageNet 的额外收益在本轮材料中**没有得到受控确证**。
 5. 完整源训练命令仍有记录缺口，因此本仓库**不声称全链条无缺口可复现**。
 
