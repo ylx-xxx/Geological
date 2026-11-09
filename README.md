@@ -19,6 +19,12 @@ Swin-T + UPerNet，把 LoveDA 源域 RGB 编码器迁移到 Landslide4Sense 滑�
 - **N2 只改地形两个通道**（坡度、DEM）的归一化统计，光谱 12 通道处理与 N0 完全相同。
 - 兼容源码中存在的 STCA、均值初始化、额外损失等分支**在本轮五配置中均未启用**，不属于正式配置。
 
+### 实验流程
+
+![Controlled-study workflow](figures/study_workflow.png)
+
+Within each split, the same resampled patch indices are used across candidates and seeds. Valid and historical Test are resampled separately.
+
 ## 2. 训练与评价口径
 
 - 数据划分：Train 3799 / Valid 245 / 历史 Test 800（patch 128×128×14）。
